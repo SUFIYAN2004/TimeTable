@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .timetable {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .day-selector {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .day-selector select {
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+
+        .timetable-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .timetable-table th, .timetable-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .timetable-table th {
+            background-color: #3498db;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">I B.C.A-'B' timeTable</h1>
+    <div class="timetable">
+        <div class="day-selector">
+            <select id="daySelector">
+                <option value="monday">day-order-1</option>
+                <option value="tuesday">day-order-2</option>
+                <option value="wednesday">day-order-3</option>
+                <option value="thursday">day-order-4</option>
+                <option value="friday">day-order-5</option>
+                <option value="Saturday">day-order-6</option>
+            </select>
+        </div>
+
+        <table class="timetable-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Subject</th>
+                    <th>Teacher</th>
+                </tr>
+            </thead>
+            <tbody id="timetableBody">
+                <!-- Timetable content will go here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Sample timetable data (you can replace this with your data)
+        const timetableData = {
+            monday: [
+                { time: '09:00 AM', subject: 'English', teacher: 'Mr. Syed Ahmed Basha' },
+                { time: '09:56 AM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
+                { time: '10:50 PM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' },
+                { time: '11:45 PM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
+                { time: '01:40 PM', subject: 'Language', teacher: 'Dr.Mohamed Yassir' }
+            ],
+            tuesday: [
+                { time: '09:00 AM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' },
+                { time: '09:56 AM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
+                { time: '10:50 PM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' },
+                { time: '11:45 PM', subject: 'Language', teacher: 'Dr.Mohamed Yassir' },
+                { time: '01:40 PM', subject: 'English', teacher: 'Mr. k. Rajesh' }
+            ],
+            wednesday:  [
+                { time: '09:00 AM', subject: 'Language', teacher: 'Dr.Mohamed Yassir' },
+                { time: '09:56 AM', subject: 'English', teacher: 'Mr. k. Rajesh' },
+                { time: '10:50 PM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' },
+                { time: '11:45 PM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
+                { time: '01:40 PM', subject: 'Value Educations', teacher: 'Mr. Abdul Ahed' }
+            ],
+            thursday: [
+                { time: '09:00 AM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' },
+                { time: '09:56 AM', subject: 'Language', teacher: 'Dr.Mohamed Yassir' },
+                { time: '10:50 PM', subject: 'English', teacher: 'Mr. k. Rajesh' },
+                { time: '11:45 PM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
+                { time: '01:40 PM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' }
+            ],
+            friday: [
+                { time: '09:00 AM', subject: 'Practice-LAB', teacher: 'Mr.Tipu Sultan' },
+                { time: '09:56 AM', subject: 'Practice-LAB', teacher: 'Mr.Tipu Sultan' },
+                { time: '10:50 PM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
+                { time: '11:45 PM', subject: 'English', teacher: 'Mr. Refath Ahmed' },
+                { time: '01:40 PM', subject: 'Language', teacher: 'Dr.Mohamed Yassir' }
+            ],
+            Saturday:[
+                { time: '09:00 AM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' },
+                { time: '09:56 AM', subject: 'Language', teacher: 'Dr.Mohamed Yassir' },
+                { time: '10:50 PM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
+                { time: '11:45 PM', subject: 'English', teacher: 'Mr. Refath Ahmed' },
+                { time: '01:40 PM', subject: 'Language', teacher: 'Mr.Tipu Sultan' }
+            ]
+        };
+
+        // Function to update timetable based on selected day
+        function updateTimetable() {
+            const selectedDay = document.getElementById('daySelector').value;
+            const timetableBody = document.getElementById('timetableBody');
+            timetableBody.innerHTML = ''; // Clear existing content
+
+            // Populate the timetable with data for the selected day
+            timetableData[selectedDay].forEach(entry => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${entry.time}</td>
+                    <td>${entry.subject}</td>
+                    <td>${entry.teacher}</td>
+                `;
+                timetableBody.appendChild(row);
+            });
+        }
+
+        // Add event listener to update timetable when day is selected
+        document.getElementById('daySelector').addEventListener('change', updateTimetable);
+
+        // Initial update when the page loads
+        updateTimetable();
+    </script>
+</body>
+</html>

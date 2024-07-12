@@ -13,7 +13,7 @@
         }
 
         .timetable {
-            max-width: 600px;
+            max-width: 100%;
             margin: 0 auto;
         }
 
@@ -21,6 +21,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
+            flex-wrap: wrap;
         }
 
         .day-selector select {
@@ -29,6 +30,9 @@
             border: 1px solid #ccc;
             border-radius: 3px;
             margin-right: 10px;
+            margin-bottom: 10px;
+            flex: 1 1 auto;
+            min-width: 120px;
         }
 
         .timetable-table {
@@ -46,10 +50,30 @@
             background-color: #3498db;
             color: #fff;
         }
+
+        @media (max-width: 768px) {
+            .timetable-table th, .timetable-table td {
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .day-selector {
+                flex-direction: column;
+            }
+
+            .day-selector select {
+                margin-right: 0;
+            }
+
+            .timetable-table th, .timetable-table td {
+                padding: 5px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">I B.C.A-'B' timeTable</h1>
+    <h1 style="text-align: center;">II B.C.A-'B' timeTable</h1>
     <div class="timetable">
         <div class="day-selector">
             <select id="daySelector">
@@ -122,7 +146,7 @@
                 { time: '09:00 AM', subject: 'Accounts', teacher: 'Mr. Ibrahim' },
                 { time: '09:56 AM', subject: 'Python', teacher: 'Mr. Ameen Sir' },
                 { time: '10:50 PM', subject: 'OS', teacher: 'Mr. Ahed Sir' },
-                { time: '11:45 PM', subject: 'Language', teachers: { tamil: 'Mr. Faizan', urdu: 'Mr. Faizan' } },
+                { time: '11:45 PM', subject: 'Language', teachers: { tamil: 'Mr. Waseem', urdu: 'Dr. Mohamed Yasser' } },
                 { time: '01:40 PM', subject: 'English', teacher: 'Mr. Abrar' }
             ]
         };

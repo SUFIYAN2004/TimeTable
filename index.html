@@ -58,7 +58,7 @@
                 <option value="wednesday">day-order-3</option>
                 <option value="thursday">day-order-4</option>
                 <option value="friday">day-order-5</option>
-                <option value="Saturday">day-order-6</option>
+                <option value="saturday">day-order-6</option>
             </select>
         </div>
 
@@ -80,46 +80,46 @@
         // Sample timetable data (you can replace this with your data)
         const timetableData = {
             monday: [
-                { time: '09:00 AM', subject: 'English', teacher: 'Mr. Syed Ahmed Basha' },
-                { time: '09:56 AM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
-                { time: '10:50 PM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' },
-                { time: '11:45 PM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
-                { time: '01:40 PM', subject: 'Language', teacher: 'Dr.Mohamed Yassir' }
+                { time: '09:00 AM', subject: 'Language', teacher: 'Dr. Mohamed Yasser' },
+                { time: '09:56 AM', subject: 'English', teacher: 'Mr. Ahmed Basha' },
+                { time: '10:50 PM', subject: 'Accounts', teacher: 'Mr. Ibrahim' },
+                { time: '11:45 PM', subject: 'Python', teacher: 'Mr. Ameen Sir' },
+                { time: '01:40 PM', subject: 'OS', teacher: 'Mr. Ahed Sir' }
             ],
             tuesday: [
-                { time: '09:00 AM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' },
-                { time: '09:56 AM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
-                { time: '10:50 PM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' },
-                { time: '11:45 PM', subject: 'Language', teacher: 'Dr.Mohamed Yassir' },
-                { time: '01:40 PM', subject: 'English', teacher: 'Mr. k. Rajesh' }
+                { time: '09:00 AM', subject: 'Accounts', teacher: 'Mr. Ibrahim' },
+                { time: '09:56 AM', subject: 'Language', teacher: 'Mr. Faizan' },
+                { time: '10:50 PM', subject: 'Python', teacher: 'Mr. Ameen Sir' },
+                { time: '11:45 PM', subject: 'OS', teacher: 'Mr. Ahed Sir' },
+                { time: '01:40 PM', subject: 'English', teacher: 'Mr. Rajesh' }
             ],
             wednesday:  [
-                { time: '09:00 AM', subject: 'Language', teacher: 'Dr.Mohamed Yassir' },
-                { time: '09:56 AM', subject: 'English', teacher: 'Mr. k. Rajesh' },
-                { time: '10:50 PM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' },
-                { time: '11:45 PM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
-                { time: '01:40 PM', subject: 'Value Educations', teacher: 'Mr. Abdul Ahed' }
+                { time: '09:00 AM', subject: 'English', teacher: 'Mr. Abrar' },
+                { time: '09:56 AM', subject: 'Lab', teacher: 'Mr. Ameen Sir' },
+                { time: '10:50 PM', subject: 'Lab', teacher: 'Mr. Ameen Sir' },
+                { time: '11:45 PM', subject: 'Accounts', teacher: 'Mr. Ibrahim' },
+                { time: '01:40 PM', subject: 'Language', teacher: 'Mr. Waseem' }
             ],
             thursday: [
-                { time: '09:00 AM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' },
-                { time: '09:56 AM', subject: 'Language', teacher: 'Dr.Mohamed Yassir' },
-                { time: '10:50 PM', subject: 'English', teacher: 'Mr. k. Rajesh' },
-                { time: '11:45 PM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
-                { time: '01:40 PM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' }
+                { time: '09:00 AM', subject: 'Python', teacher: 'Mr. Ameen Sir' },
+                { time: '09:56 AM', subject: 'English', teacher: 'Mr. Rajesh' },
+                { time: '10:50 PM', subject: 'OS', teacher: 'Mr. Ahed Sir' },
+                { time: '11:45 PM', subject: 'Non-Major', teacher: 'Mr. Raqib Sir' },
+                { time: '01:40 PM', subject: 'Language', teacher: 'Mr. Murgun' }
             ],
             friday: [
-                { time: '09:00 AM', subject: 'Practice-LAB', teacher: 'Mr.Tipu Sultan' },
-                { time: '09:56 AM', subject: 'Practice-LAB', teacher: 'Mr.Tipu Sultan' },
-                { time: '10:50 PM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
-                { time: '11:45 PM', subject: 'English', teacher: 'Mr. Refath Ahmed' },
-                { time: '01:40 PM', subject: 'Language', teacher: 'Dr.Mohamed Yassir' }
+                { time: '09:00 AM', subject: 'Accounts', teacher: 'Mr. Ibrahim' },
+                { time: '09:56 AM', subject: 'Language', teacher: 'Mr. Murgun' },
+                { time: '10:50 PM', subject: 'Non-Major', teacher: 'Mr. Raqib Sir' },
+                { time: '11:45 PM', subject: 'Python', teacher: 'Mr. Ameen Sir' },
+                { time: '01:40 PM', subject: 'English', teacher: 'Mr. Ahmed Basha' }
             ],
-            Saturday:[
-                { time: '09:00 AM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' },
-                { time: '09:56 AM', subject: 'Language', teacher: 'Dr.Mohamed Yassir' },
-                { time: '10:50 PM', subject: 'Mathematical foundations-2', teacher: 'Mr. Mabub Basha' },
-                { time: '11:45 PM', subject: 'English', teacher: 'Mr. Refath Ahmed' },
-                { time: '01:40 PM', subject: 'C++ & Ds', teacher: 'Mr.Tipu Sultan' }
+            saturday:[
+                { time: '09:00 AM', subject: 'Accounts', teacher: 'Mr. Ibrahim' },
+                { time: '09:56 AM', subject: 'Python', teacher: 'Mr. Ameen Sir' },
+                { time: '10:50 PM', subject: 'OS', teacher: 'Mr. Ahed Sir' },
+                { time: '11:45 PM', subject: 'Language', teacher: 'Mr. Faizan' },
+                { time: '01:40 PM', subject: 'English', teacher: 'Mr. Abrar' }
             ]
         };
 

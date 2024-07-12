@@ -60,6 +60,10 @@
                 <option value="friday">day-order-5</option>
                 <option value="saturday">day-order-6</option>
             </select>
+            <select id="languageSelector">
+                <option value="tamil">Tamil</option>
+                <option value="urdu">Urdu</option>
+            </select>
         </div>
 
         <table class="timetable-table">
@@ -80,7 +84,7 @@
         // Sample timetable data (you can replace this with your data)
         const timetableData = {
             monday: [
-                { time: '09:00 AM', subject: 'Language', teacher: 'Dr. Mohamed Yasser' },
+                { time: '09:00 AM', subject: 'Language', teachers: { tamil: 'Mr. Waseem', urdu: 'Dr. Mohamed Yasser' } },
                 { time: '09:56 AM', subject: 'English', teacher: 'Mr. Ahmed Basha' },
                 { time: '10:50 PM', subject: 'Accounts', teacher: 'Mr. Ibrahim' },
                 { time: '11:45 PM', subject: 'Python', teacher: 'Mr. Ameen Sir' },
@@ -88,7 +92,7 @@
             ],
             tuesday: [
                 { time: '09:00 AM', subject: 'Accounts', teacher: 'Mr. Ibrahim' },
-                { time: '09:56 AM', subject: 'Language', teacher: 'Mr. Faizan' },
+                { time: '09:56 AM', subject: 'Language', teachers: { tamil: 'Mr. Murgun', urdu: 'Mr. Faizan' } },
                 { time: '10:50 PM', subject: 'Python', teacher: 'Mr. Ameen Sir' },
                 { time: '11:45 PM', subject: 'OS', teacher: 'Mr. Ahed Sir' },
                 { time: '01:40 PM', subject: 'English', teacher: 'Mr. Rajesh' }
@@ -98,19 +102,19 @@
                 { time: '09:56 AM', subject: 'Lab', teacher: 'Mr. Ameen Sir' },
                 { time: '10:50 PM', subject: 'Lab', teacher: 'Mr. Ameen Sir' },
                 { time: '11:45 PM', subject: 'Accounts', teacher: 'Mr. Ibrahim' },
-                { time: '01:40 PM', subject: 'Language', teacher: 'Mr. Waseem' }
+                { time: '01:40 PM', subject: 'Language', teachers: { tamil: 'Mr. Waseem', urdu: 'Mr. Faizan' } }
             ],
             thursday: [
                 { time: '09:00 AM', subject: 'Python', teacher: 'Mr. Ameen Sir' },
                 { time: '09:56 AM', subject: 'English', teacher: 'Mr. Rajesh' },
                 { time: '10:50 PM', subject: 'OS', teacher: 'Mr. Ahed Sir' },
-                { time: '11:45 PM', subject: 'Non-Major', teacher: 'Mr. Raqib Sir' },
-                { time: '01:40 PM', subject: 'Language', teacher: 'Mr. Murgun' }
+                { time: '11:45 PM', subject: 'Non-Major', teachers: { tamil: 'Mr. Arunachalam', urdu: 'Mr. Raqib Sir' } },
+                { time: '01:40 PM', subject: 'Language', teachers: { tamil: 'Mr. Murgun', urdu: 'Mr. Faizan' } }
             ],
             friday: [
                 { time: '09:00 AM', subject: 'Accounts', teacher: 'Mr. Ibrahim' },
-                { time: '09:56 AM', subject: 'Language', teacher: 'Mr. Murgun' },
-                { time: '10:50 PM', subject: 'Non-Major', teacher: 'Mr. Raqib Sir' },
+                { time: '09:56 AM', subject: 'Language', teachers: { tamil: 'Mr. Murgun', urdu: 'Mr. Faizan' } },
+                { time: '10:50 PM', subject: 'Non-Major', teachers: { tamil: 'Mr. Arunachalam', urdu: 'Mr. Raqib Sir' } },
                 { time: '11:45 PM', subject: 'Python', teacher: 'Mr. Ameen Sir' },
                 { time: '01:40 PM', subject: 'English', teacher: 'Mr. Ahmed Basha' }
             ],
@@ -118,31 +122,37 @@
                 { time: '09:00 AM', subject: 'Accounts', teacher: 'Mr. Ibrahim' },
                 { time: '09:56 AM', subject: 'Python', teacher: 'Mr. Ameen Sir' },
                 { time: '10:50 PM', subject: 'OS', teacher: 'Mr. Ahed Sir' },
-                { time: '11:45 PM', subject: 'Language', teacher: 'Mr. Faizan' },
+                { time: '11:45 PM', subject: 'Language', teachers: { tamil: 'Mr. Faizan', urdu: 'Mr. Faizan' } },
                 { time: '01:40 PM', subject: 'English', teacher: 'Mr. Abrar' }
             ]
         };
 
-        // Function to update timetable based on selected day
+        // Function to update timetable based on selected day and language
         function updateTimetable() {
             const selectedDay = document.getElementById('daySelector').value;
+            const selectedLanguage = document.getElementById('languageSelector').value;
             const timetableBody = document.getElementById('timetableBody');
             timetableBody.innerHTML = ''; // Clear existing content
 
             // Populate the timetable with data for the selected day
             timetableData[selectedDay].forEach(entry => {
                 const row = document.createElement('tr');
+                let teacher = entry.teacher;
+                if (entry.subject === 'Language' || entry.subject === 'Non-Major') {
+                    teacher = entry.teachers[selectedLanguage];
+                }
                 row.innerHTML = `
                     <td>${entry.time}</td>
                     <td>${entry.subject}</td>
-                    <td>${entry.teacher}</td>
+                    <td>${teacher}</td>
                 `;
                 timetableBody.appendChild(row);
             });
         }
 
-        // Add event listener to update timetable when day is selected
+        // Add event listeners to update timetable when day or language is selected
         document.getElementById('daySelector').addEventListener('change', updateTimetable);
+        document.getElementById('languageSelector').addEventListener('change', updateTimetable);
 
         // Initial update when the page loads
         updateTimetable();
